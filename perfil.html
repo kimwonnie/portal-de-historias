@@ -3,26 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Perfil do Autor | Portal de Histórias</title>
+  <title>Meu Perfil | Portal de Histórias</title>
   <link rel="stylesheet" href="estilos.css" />
 </head>
 <body>
   <header>
     <nav class="navbar">
+      <a href="index.html" class="logo">Portal de Histórias</a>
       <a href="index.html">Início</a>
       <a href="categorias.html">Categorias</a>
-      <a href="perfil.html">Perfil</a>
       <a href="login.html">Login</a>
     </nav>
-    <h1>Portal de Histórias</h1>
   </header>
 
-  <main>
-    <section class="perfil">
-      <h2>Perfil do Autor</h2>
-      <p>Nome: Autor Exemplo</p>
-      <p>Histórias Publicadas: 5</p>
-      <p>Seguidores: 123</p>
+  <main class="perfil-container">
+    <section class="perfil-topo">
+      <img src="https://via.placeholder.com/120" alt="Foto de perfil" class="perfil-foto">
+      <div class="perfil-info">
+        <h1>Nome do Usuário</h1>
+        <p>Membro desde: Janeiro de 2025</p>
+        <p>Localização: Brasil</p>
+        <p>Redes: <a href="#">@usuario</a></p>
+      </div>
+    </section>
+
+    <section class="biografia">
+      <h2>Biografia</h2>
+      <p>Aqui vai uma breve descrição sobre o usuário, seus interesses e o que gosta de escrever ou ler.</p>
+    </section>
+
+    <section class="estatisticas">
+      <div class="estat-box">Histórias: <strong>5</strong></div>
+      <div class="estat-box">Favoritos: <strong>12</strong></div>
+      <div class="estat-box">Seguidores: <strong>32</strong></div>
+    </section>
+
+    <section class="historias-publicadas">
+      <h2>Histórias Publicadas</h2>
+      <ul>
+        <li><a href="#">Título da História 1</a></li>
+        <li><a href="#">Título da História 2</a></li>
+        <li><a href="#">Título da História 3</a></li>
+      </ul>
     </section>
   </main>
 <script>
@@ -40,8 +62,6 @@
     }
   };
 </script>
-
-
   <footer>
     <p>&copy; 2025 Portal de Histórias. Todos os direitos reservados.</p>
   </footer>
