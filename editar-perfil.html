@@ -55,6 +55,22 @@
 <div id="menu-edicao" class="menu-edicao">
   <ul id="opcoes-edicao"></ul>
 </div>
+<script>
+  function toggleDropdown() {
+    const menu = document.getElementById("dropdown-menu");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+
+  // Fechar o menu ao clicar fora
+  window.onclick = function(event) {
+    if (!event.target.matches('.profile-pic')) {
+      const dropdown = document.getElementById("dropdown-menu");
+      if (dropdown && dropdown.style.display === "block") {
+        dropdown.style.display = "none";
+      }
+    }
+  };
+</script>
 
 <footer class="site-footer">
   <p>© 2025 Portal de Histórias</p>
