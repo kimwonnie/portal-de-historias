@@ -9,10 +9,18 @@
 <body>
   <header>
     <nav class="navbar">
-      <a href=""index.html" class="logo"> Portal de Histórias</a>
+      <a href="index.html" class="logo"> Portal de Histórias</a>
       <a href="index.html">Início</a>
       <a href="categorias.html">Categorias</a>
-      <a href="perfil.html">Perfil</a>
+      <div class="profile-container">
+  <img src="perfil.jpg" alt="Foto de perfil" class="profile-pic" onclick="toggleDropdown()" />
+  <div id="dropdown-menu" class="dropdown-menu">
+    <a href="perfil.html">Meu Perfil</a>
+    <a href="configuracoes.html">Configurações</a>
+    <a href="logout.html">Logout</a>
+  </div>
+</div>
+
       <a href="login.html">Login</a>
     
     <div class="menu">
@@ -87,7 +95,6 @@
     menu.style.display = menu.style.display === "block" ? "none" : "block";
   }
 
-  // Fechar o menu ao clicar fora
   window.onclick = function(event) {
     if (!event.target.matches('.profile-pic')) {
       const dropdown = document.getElementById("dropdown-menu");
@@ -97,6 +104,7 @@
     }
   };
 </script>
+
 
   <footer>
     <p>&copy; 2025 Portal de Histórias. Todos os direitos reservados.</p>
