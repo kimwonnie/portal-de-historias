@@ -2,36 +2,148 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Categorias | Portal de Histórias</title>
-  <link rel="stylesheet" href="estilos.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Categorias - Portal de Histórias</title>
+  <link rel="stylesheet" href="estilo.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f6f4f9;
+      color: #333;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #5d3a9b;
+      padding: 10px 20px;
+      color: white;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .profile-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .profile-pic {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      min-width: 120px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown a {
+      color: #333;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown a:hover {
+      background-color: #eee;
+    }
+
+    .profile-menu:hover .dropdown {
+      display: block;
+    }
+
+    .main-content {
+      padding: 20px;
+    }
+
+    .main-content h2 {
+      color: #5d3a9b;
+      margin-bottom: 20px;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    .category-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      font-weight: bold;
+      color: #5d3a9b;
+    }
+
+    footer {
+      background-color: #5d3a9b;
+      color: white;
+      text-align: center;
+      padding: 15px 10px;
+      margin-top: 40px;
+    }
+
+  </style>
 </head>
 <body>
-  <header>
-    <nav class="navbar">
+  <header class="navbar">
+    <div class="logo">📖 Portal de Histórias</div>
+    <nav class="nav-links">
       <a href="index.html">Início</a>
       <a href="categorias.html">Categorias</a>
       <a href="perfil.html">Perfil</a>
-      <a href="login.html">Login</a>
+      <a href="escrever.html">Escrever</a>
     </nav>
-    <h1>Portal de Histórias</h1>
+    <div class="profile-menu">
+      <img src="https://i.pravatar.cc/32" alt="Perfil" class="profile-pic" />
+      <div class="dropdown">
+        <a href="perfil.html">Meu Perfil</a>
+        <a href="login.html">Logout</a>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <section class="categorias">
-      <h2>Categorias Populares</h2>
-      <ul>
-        <li>Romance</li>
-        <li>Fantasia</li>
-        <li>Drama</li>
-        <li>Aventura</li>
-        <li>Suspense</li>
-      </ul>
-    </section>
+  <main class="main-content">
+    <h2>Explore Categorias</h2>
+    <div class="categories-grid">
+      <div class="category-card">Romance</div>
+      <div class="category-card">Aventura</div>
+      <div class="category-card">Suspense</div>
+      <div class="category-card">Fantasia</div>
+      <div class="category-card">Terror</div>
+      <div class="category-card">Drama</div>
+      <div class="category-card">Comédia</div>
+      <div class="category-card">Ficção Científica</div>
+    </div>
   </main>
 
   <footer>
-    <p>&copy; 2025 Portal de Histórias. Todos os direitos reservados.</p>
+    © 2025 Portal de Histórias. Todos os direitos reservados.
   </footer>
 </body>
 </html>
