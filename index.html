@@ -2,159 +2,86 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portal de Histórias - Início</title>
-  <link rel="stylesheet" href="estilo.css"/>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f6f4f9;
-      color: #333;
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #5d3a9b;
-      padding: 10px 20px;
-      color: white;
-    }
-
-    .logo {
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .profile-menu {
-      position: relative;
-      display: inline-block;
-    }
-
-    .profile-pic {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-
-    .dropdown {
-      display: none;
-      position: absolute;
-      right: 0;
-      background-color: white;
-      min-width: 120px;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
-
-    .dropdown a {
-      color: #333;
-      padding: 10px;
-      text-decoration: none;
-      display: block;
-    }
-
-    .dropdown a:hover {
-      background-color: #eee;
-    }
-
-    .profile-menu:hover .dropdown {
-      display: block;
-    }
-
-    .main-content {
-      padding: 20px;
-    }
-
-    .section {
-      margin-bottom: 40px;
-    }
-
-    .section h2 {
-      color: #5d3a9b;
-      margin-bottom: 10px;
-    }
-
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .card {
-      background-color: white;
-      border-radius: 10px;
-      padding: 15px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      width: 200px;
-    }
-
-    footer {
-      background-color: #5d3a9b;
-      color: white;
-      text-align: center;
-      padding: 15px 10px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Início | Portal de Histórias</title>
+  <link rel="stylesheet" href="estilos.css" />
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">📖 Portal de Histórias</div>
-    <nav class="nav-links">
+  <header>
+    <nav class="navbar">
+      <a href=""index.html" class="logo"> Portal de Histórias</a>
       <a href="index.html">Início</a>
       <a href="categorias.html">Categorias</a>
       <a href="perfil.html">Perfil</a>
-      <a href="escrever.html">Escrever</a>
-    </nav>
-    <div class="profile-menu">
-      <img src="https://i.pravatar.cc/32" alt="Perfil" class="profile-pic" />
-      <div class="dropdown">
-        <a href="perfil.html">Meu Perfil</a>
-        <a href="login.html">Logout</a>
+      <a href="login.html">Login</a>
+    
+    <div class="menu">
+        <a href="index.html">Início</a>
+        <a href="categorias.html">Categorias</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="login.html">Login</a>
+    <div class="dropdown">
+          <button class="dropbtn">Menu</button>
+          <div class="dropdown-content">
+            <a href="perfil.html">Editar Perfil</a>
+            <a href="logout.html">Logout</a>
+          </div>
+        </div>
       </div>
-    </div>
+    </nav>
   </header>
+  </main>
+    <section>
+     <h1>Portal de Histórias</h1>
+    <!-- Seção de Busca -->
+    <section class="busca">
+      <h2>Encontre sua próxima leitura</h2>
+      <form action="#" method="GET">
+        <input type="text" placeholder="Pesquisar histórias..." id="search-input" name="search" />
+        <button type="submit">Buscar</button>
+      </form>
+    </section>
 
-  <main class="main-content">
-    <section class="section">
-      <h2>Destaques</h2>
-      <div class="cards">
-        <div class="card">História em destaque 1</div>
-        <div class="card">História em destaque 2</div>
-        <div class="card">História em destaque 3</div>
+    <!-- Seção de Destaques -->
+    <section class="destaques">
+      <h2>Destaques da Semana</h2>
+      <div class="historia">
+        <h3>A Jornada do Herói</h3>
+        <p>Autor: MinhyukDreams</p>
+        <p>Uma história emocionante de superação e descobertas.</p>
+        <a href="#">Ler agora</a>
+      </div>
+      <div class="historia">
+        <h3>Segredos da Floresta</h3>
+        <p>Autor: FanfiqueiraX</p>
+        <p>Um romance com suspense em um vilarejo isolado.</p>
+        <a href="#">Ler agora</a>
       </div>
     </section>
 
-    <section class="section">
-      <h2>Categorias</h2>
-      <div class="cards">
-        <div class="card">Romance</div>
-        <div class="card">Aventura</div>
-        <div class="card">Suspense</div>
-        <div class="card">Fantasia</div>
+    <!-- Seção de Categorias -->
+    <section class="categorias">
+      <h2>Categorias em Destaque</h2>
+      <div class="categoria">
+        <h3>Ficção Científica</h3>
+        <p>Histórias de ficção científica que exploram novos mundos e tecnologias.</p>
+        <a href="#">Explorar</a>
+      </div>
+      <div class="categoria">
+        <h3>Romance</h3>
+        <p>Romances com tramas envolventes e personagens apaixonantes.</p>
+        <a href="#">Explorar</a>
+      </div>
+      <div class="categoria">
+        <h3>Fantasia</h3>
+        <p>Entre em mundos mágicos com criaturas fantásticas e aventuras épicas.</p>
+        <a href="#">Explorar</a>
       </div>
     </section>
   </main>
 
   <footer>
-    © 2025 Portal de Histórias. Todos os direitos reservados.
+    <p>&copy; 2025 Portal de Histórias. Todos os direitos reservados.</p>
   </footer>
 </body>
 </html>
