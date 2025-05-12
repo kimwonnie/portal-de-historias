@@ -1,0 +1,137 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+.navbar {
+  background-color: #6a0dad;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  color: #fff;
+  position: relative;
+}
+
+.logo-container img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.site-nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f2f2f2;
+}
+
+.edit-profile-container {
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.edit-profile-container h2 {
+  text-align: center;
+  color: #6a0dad;
+}
+
+.edit-profile-container input,
+.edit-profile-container textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.edit-profile-container button {
+  background-color: #6a0dad;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.imagem-editavel {
+  position: relative;
+  display: inline-block;
+}
+
+.perfil-circular img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.foto-capa img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.camera-icon {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.menu-edicao {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  display: none;
+  z-index: 10;
+}
+
+.site-footer {
+  background-color: #6a0dad;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 50px;
+}
