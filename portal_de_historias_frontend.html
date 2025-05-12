@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portal de Histórias - Edição de Perfil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f9f9f9; color: #333; }
+    .navbar, .site-footer {
+      background: linear-gradient(to right, #6a0dad, #888);
+      color: white;
+      padding: 10px 20px;
+    }
+    .logo-container img { height: 40px; }
+    .logo { font-size: 20px; font-weight: bold; }
+    .site-nav a { margin: 0 10px; color: white; text-decoration: none; }
+    .profile-area { position: relative; }
+    .avatar { width: 40px; height: 40px; border-radius: 50%; border: 2px solid white; cursor: pointer; }
+    .dropdown-menu { display: none; position: absolute; top: 50px; right: 0; background: white; border: 1px solid #ccc; border-radius: 5px; z-index: 1000; }
+    .dropdown-menu a { display: block; padding: 10px; color: #333; text-decoration: none; }
+    .edit-profile-container { max-width: 600px; margin: 30px auto; padding: 20px; }
+    #edit-profile-form input, #edit-profile-form textarea {
+      width: 100%; padding: 10px; margin-bottom: 15px;
+      border-radius: 6px; border: 1px solid #ccc;
+    }
+    #edit-profile-form button {
+      background-color: #6a0dad; color: white;
+      padding: 10px 15px; border: none;
+      border-radius: 6px; cursor: pointer;
+    }
+    .imagem-editavel { position: relative; display: inline-block; }
+    .perfil-circular img { border-radius: 50%; width: 100px; }
+    .imagem-editavel img { max-width: 100%; display: block; }
+    .camera-icon {
+      position: absolute; bottom: 8px; right: 8px;
+      background-color: rgba(0,0,0,0.6); color: white;
+      border: none; border-radius: 50%; padding: 6px 8px; cursor: pointer;
+    }
+    .menu-edicao {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: white; border-top: 1px solid #ccc;
+      display: none; z-index: 2000;
+    }
+    .menu-edicao ul { list-style: none; margin: 0; padding: 10px; }
+    .menu-edicao li {
+      padding: 12px 10px; border-bottom: 1px solid #eee;
+      text-align: center; cursor: pointer;
+    }
+    .menu-edicao li:hover { background-color: #f0f0f0; }
+    .site-footer { text-align: center; margin-top: 40px; }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo-container">
+    <img id="logo-img" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhT6cO5bI0-KmE_YoKJLElLaCs0otsfZqQJgMCxG-wyyYZ581ut5cMDHNT_ac_sichImd4LG3eegIGnel9d7zP74Iqbv3r8Cb49FR0eMl0ct7XpuadzBW6wDFSsOheh0V-AxQ4ukzOOnId1dR5X9IkQVzXpLu2-0NvONYxyPnGNqXJEdehKmQ3kTytm2xo/s320/logo.png" alt="Logo do Site">
+  </div>
+  <div class="logo">Portal de Histórias</div>
+  <nav class="site-nav">
+    <a href="#">Início</a>
+    <a href="#">Categorias</a>
+    <a href="#">Perfil</a>
+  </nav>
+  <div class="profile-area">
+    <img src="https://i.pinimg.com/736x/2a/f5/1f/2af51f73597aec1b4658832d5e34f35d.jpg" class="avatar" id="avatar">
+    <div class="dropdown-menu" id="dropdown">
+      <a href="#">Meu Perfil</a>
+      <a href="#">Minhas Histórias</a>
+      <a href="#">Editar Perfil</a>
+      <a href="#" id="btn-sair">Sair</a>
+    </div>
+  </div>
+</header>
+
+<main class="edit-profile-container">
+  <h2>Editar Perfil</h2>
+  <form id="edit-profile-form">
+    <div class="foto-perfil">
+      <div class="imagem-editavel perfil-circular">
+        <img id="preview-avatar" src="https://i.pinimg.com/736x/2a/f5/1f/2af51f73597aec1b4658832d5e34f35d.jpg" alt="Foto de Perfil">
+        <button type="button" class="camera-icon" onclick="abrirMenu('perfil')">📷</button>
+      </div>
+    </div>
+    <div class="foto-capa">
+      <div class="imagem-editavel">
+        <img id="preview-capa" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxveTDKoVFET8g4hFKNSSh1sh_ul9-lmhwDA&s" alt="Capa de Perfil">
+        <button type="button" class="camera-icon" onclick="abrirMenu('capa')">📷</button>
+      </div>
+    </div>
+    <input type="text" placeholder="Nome de Usuário" required>
+    <input type="email" placeholder="E-mail" required>
+    <input type="text" placeholder="Gêneros Literários (separados por vírgula)">
+    <textarea placeholder="Biografia"></textarea>
+    <button type="submit">Salvar Alterações</button>
+  </form>
+</main>
+
+<div id="menu-edicao" class="menu-edicao">
+  <ul id="opcoes-edicao"></ul>
+</div>
+
+<footer class="site-footer">
+  <p>© 2025 Portal de Histórias</p>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const avatar = document.getElementById("avatar");
+  const dropdown = document.getElementById("dropdown");
+  const btnSair = document.getElementById("btn-sair");
+
+  avatar.addEventListener("click", () => {
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+  });
+
+  window.addEventListener("click", function (e) {
+    if (!avatar.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.style.display = "none";
+    }
+  });
+
+  btnSair.addEventListener("click", (e) => {
+    e.preventDefault();
+    alert("Você saiu com segurança.");
+  });
+
+  window.abrirMenu = function (tipo) {
+    const menu = document.getElementById("menu-edicao");
+    const opcoes = document.getElementById("opcoes-edicao");
+    opcoes.innerHTML = "";
+
+    if (tipo === "capa") {
+      opcoes.innerHTML = `
+        <li onclick="escolherFoto('${tipo}')">Escolher existente</li>
+        <li onclick="tirarFoto('${tipo}')">Tirar foto</li>
+        <li onclick="removerFoto('${tipo}')">Remover</li>
+      `;
+    } else {
+      opcoes.innerHTML = `
+        <li onclick="escolherFoto('${tipo}')">Escolher existente</li>
+        <li onclick="tirarFoto('${tipo}')">Tirar foto</li>
+      `;
+    }
+
+    menu.style.display = "block";
+    window.tipoFotoAtual = tipo;
+  };
+
+  window.escolherFoto = function (tipo) {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.style.display = "none";
+    document.body.appendChild(input);
+
+    input.addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          if (tipo === "capa") {
+            document.getElementById("preview-capa").src = e.target.result;
+          } else {
+            document.getElementById("preview-avatar").src = e.target.result;
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+      document.body.removeChild(input);
+    });
+
+    input.click();
+    fecharMenu();
+  };
+
+  window.tirarFoto = function (tipo) {
+    alert("Abrir câmera do dispositivo (simulação)");
+    fecharMenu();
+  };
+
+  window.removerFoto = function (tipo) {
+    if (tipo === "capa") {
+      document.getElementById("preview-capa").src = "https://via.placeholder.com/600x150?text=Capa+de+Perfil";
+    } else {
+      document.getElementById("preview-avatar").src = "https://via.placeholder.com/100";
+    }
+    fecharMenu();
+  };
+
+  function fecharMenu() {
+    document.getElementById("menu-edicao").style.display = "none";
+  }
+
+  window.addEventListener("click", function (e) {
+    const menu = document.getElementById("menu-edicao");
+    if (menu.style.display === "block" && !menu.contains(e.target) && !e.target.classList.contains("camera-icon")) {
+      fecharMenu();
+    }
+  });
+});
+</script>
+
+</body>
+</html>
