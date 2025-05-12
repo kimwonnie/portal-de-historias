@@ -2,64 +2,71 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Portal de Histórias - Edição de Perfil</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/style.css" />
+  <title>Início | Portal de Histórias</title>
+  <link rel="stylesheet" href="estilos.css" />
 </head>
 <body>
+  <header>
+    <nav class="navbar">
+      <a href="index.html">Início</a>
+      <a href="categorias.html">Categorias</a>
+      <a href="perfil.html">Perfil</a>
+      <a href="login.html">Login</a>
+    </nav>
+    <h1>Portal de Histórias</h1>
+  </header>
 
-<header class="navbar">
-  <div class="logo-container">
-    <img id="logo-img" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhT6cO5bI0-KmE_YoKJLElLaCs0otsfZqQJgMCxG-wyyYZ581ut5cMDHNT_ac_sichImd4LG3eegIGnel9d7zP74Iqbv3r8Cb49FR0eMl0ct7XpuadzBW6wDFSsOheh0V-AxQ4ukzOOnId1dR5X9IkQVzXpLu2-0NvONYxyPnGNqXJEdehKmQ3kTytm2xo/s320/logo.png" alt="Logo do Site">
-  </div>
-  <div class="logo">Portal de Histórias</div>
-  <nav class="site-nav">
-    <a href="#">Início</a>
-    <a href="#">Categorias</a>
-    <a href="#">Perfil</a>
-  </nav>
-  <div class="profile-area">
-    <img src="https://i.pinimg.com/736x/2a/f5/1f/2af51f73597aec1b4658832d5e34f35d.jpg" class="avatar" id="avatar">
-    <div class="dropdown-menu" id="dropdown">
-      <a href="#">Meu Perfil</a>
-      <a href="#">Minhas Histórias</a>
-      <a href="#">Editar Perfil</a>
-      <a href="#" id="btn-sair">Sair</a>
-    </div>
-  </div>
-</header>
+  <main>
+    <!-- Seção de Busca -->
+    <section class="busca">
+      <h2>Encontre sua próxima leitura</h2>
+      <form action="#" method="GET">
+        <input type="text" placeholder="Pesquisar histórias..." id="search-input" name="search" />
+        <button type="submit">Buscar</button>
+      </form>
+    </section>
 
-<main class="edit-profile-container">
-  <h2>Editar Perfil</h2>
-  <form id="edit-profile-form">
-    <div class="foto-perfil">
-      <div class="imagem-editavel perfil-circular">
-        <img id="preview-avatar" src="https://i.pinimg.com/736x/2a/f5/1f/2af51f73597aec1b4658832d5e34f35d.jpg" alt="Foto de Perfil">
-        <button type="button" class="camera-icon" onclick="abrirMenu('perfil')">📷</button>
+    <!-- Seção de Destaques -->
+    <section class="destaques">
+      <h2>Destaques da Semana</h2>
+      <div class="historia">
+        <h3>A Jornada do Herói</h3>
+        <p>Autor: MinhyukDreams</p>
+        <p>Uma história emocionante de superação e descobertas.</p>
+        <a href="#">Ler agora</a>
       </div>
-    </div>
-    <div class="foto-capa">
-      <div class="imagem-editavel">
-        <img id="preview-capa" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxveTDKoVFET8g4hFKNSSh1sh_ul9-lmhwDA&s" alt="Capa de Perfil">
-        <button type="button" class="camera-icon" onclick="abrirMenu('capa')">📷</button>
+      <div class="historia">
+        <h3>Segredos da Floresta</h3>
+        <p>Autor: FanfiqueiraX</p>
+        <p>Um romance com suspense em um vilarejo isolado.</p>
+        <a href="#">Ler agora</a>
       </div>
-    </div>
-    <input type="text" placeholder="Nome de Usuário" required>
-    <input type="email" placeholder="E-mail" required>
-    <input type="text" placeholder="Gêneros Literários (separados por vírgula)">
-    <textarea placeholder="Biografia"></textarea>
-    <button type="submit">Salvar Alterações</button>
-  </form>
-</main>
+    </section>
 
-<div id="menu-edicao" class="menu-edicao">
-  <ul id="opcoes-edicao"></ul>
-</div>
+    <!-- Seção de Categorias -->
+    <section class="categorias">
+      <h2>Categorias em Destaque</h2>
+      <div class="categoria">
+        <h3>Ficção Científica</h3>
+        <p>Histórias de ficção científica que exploram novos mundos e tecnologias.</p>
+        <a href="#">Explorar</a>
+      </div>
+      <div class="categoria">
+        <h3>Romance</h3>
+        <p>Romances com tramas envolventes e personagens apaixonantes.</p>
+        <a href="#">Explorar</a>
+      </div>
+      <div class="categoria">
+        <h3>Fantasia</h3>
+        <p>Entre em mundos mágicos com criaturas fantásticas e aventuras épicas.</p>
+        <a href="#">Explorar</a>
+      </div>
+    </section>
+  </main>
 
-<footer class="site-footer">
-  <p>© 2025 Portal de Histórias</p>
-</footer>
-
-<script src="js/script.js"></script>
+  <footer>
+    <p>&copy; 2025 Portal de Histórias. Todos os direitos reservados.</p>
+  </footer>
 </body>
 </html>
