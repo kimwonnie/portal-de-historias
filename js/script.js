@@ -35,19 +35,3 @@ function removerImagem(tipo) {
   document.getElementById(`preview-${tipo}`).src = "";
   document.getElementById("menu-edicao").style.display = "none";
 }
-<script>
-  function toggleDropdown() {
-    const menu = document.getElementById("dropdown-menu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  }
-
-  // Fechar o menu ao clicar fora
-  window.onclick = function(event) {
-    if (!event.target.matches('.profile-pic')) {
-      const dropdown = document.getElementById("dropdown-menu");
-      if (dropdown && dropdown.style.display === "block") {
-        dropdown.style.display = "none";
-      }
-    }
-  };
-</script>
