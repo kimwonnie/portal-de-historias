@@ -8,91 +8,92 @@
 </head>
 <body>
   <header>
-   
+    <nav class="navbar">
+      <a href="index.html" class="logo">Portal de Histórias</a>
+      <a href="index.html">Início</a>
+      <a href="categorias.html">Categorias</a>
+      <a href="perfil.html">Perfil</a>
       <a href="login.html">Login</a>
-    
-    <div class="menu">
-        <a href="index.html">Início</a>
-        <a href="categorias.html">Categorias</a>
-        <a href="perfil.html">Perfil</a>
-        <a href="login.html">Login</a>
-    <div class="dropdown">
-  <img src="https://i.pinimg.com/736x/b2/7c/b0/b27cb0951d310f6f8ebc018561137507.jpg" alt="Foto de perfil" class="profile-pic" onclick="toggleDropdown()" />
-  <div id="dropdown-menu" class="dropdown-content">
-    <a href="editar-perfil.html">Editar Perfil</a>
-    <a href="logout.html">Logout</a>
-  </div>
-</div>
 
+      <div class="profile-container">
+        <img src="perfil.jpg" alt="Foto de perfil" class="profile-pic" onclick="toggleDropdown()" />
+        <div id="dropdown-menu" class="dropdown-menu">
+          <a href="perfil.html">Meu Perfil</a>
+          <a href="configuracoes.html">Configurações</a>
+          <a href="logout.html">Logout</a>
+        </div>
       </div>
     </nav>
   </header>
-  </main>
+
+  <main>
     <section>
-     <h1>Portal de Histórias</h1>
+      <h1>Portal de Histórias</h1>
 
-    <!-- Seção de Busca -->
-    <section class="busca">
-      <h2>Encontre sua próxima leitura</h2>
-      <form action="#" method="GET">
-        <input type="text" placeholder="Pesquisar histórias..." id="search-input" name="search" />
-        <button type="submit">Buscar</button>
-      </form>
-    </section>
+      <!-- Seção de Busca -->
+      <section class="busca">
+        <h2>Encontre sua próxima leitura</h2>
+        <form action="#" method="GET">
+          <input type="text" placeholder="Pesquisar histórias..." id="search-input" name="search" />
+          <button type="submit">Buscar</button>
+        </form>
+      </section>
 
-    <!-- Seção de Destaques -->
-    <section class="destaques">
-      <h2>Destaques da Semana</h2>
-      <div class="historia">
-        <h3>A Jornada do Herói</h3>
-        <p>Autor: MinhyukDreams</p>
-        <p>Uma história emocionante de superação e descobertas.</p>
-        <a href="#">Ler agora</a>
-      </div>
-      <div class="historia">
-        <h3>Segredos da Floresta</h3>
-        <p>Autor: FanfiqueiraX</p>
-        <p>Um romance com suspense em um vilarejo isolado.</p>
-        <a href="#">Ler agora</a>
-      </div>
-    </section>
+      <!-- Seção de Destaques -->
+      <section class="destaques">
+        <h2>Destaques da Semana</h2>
+        <div class="historia">
+          <h3>A Jornada do Herói</h3>
+          <p>Autor: MinhyukDreams</p>
+          <p>Uma história emocionante de superação e descobertas.</p>
+          <a href="#">Ler agora</a>
+        </div>
+        <div class="historia">
+          <h3>Segredos da Floresta</h3>
+          <p>Autor: FanfiqueiraX</p>
+          <p>Um romance com suspense em um vilarejo isolado.</p>
+          <a href="#">Ler agora</a>
+        </div>
+      </section>
 
-    <!-- Seção de Categorias -->
-    <section class="categorias">
-      <h2>Categorias em Destaque</h2>
-      <div class="categoria">
-        <h3>Ficção Científica</h3>
-        <p>Histórias de ficção científica que exploram novos mundos e tecnologias.</p>
-        <a href="#">Explorar</a>
-      </div>
-      <div class="categoria">
-        <h3>Romance</h3>
-        <p>Romances com tramas envolventes e personagens apaixonantes.</p>
-        <a href="#">Explorar</a>
-      </div>
-      <div class="categoria">
-        <h3>Fantasia</h3>
-        <p>Entre em mundos mágicos com criaturas fantásticas e aventuras épicas.</p>
-        <a href="#">Explorar</a>
-      </div>
+      <!-- Seção de Categorias -->
+      <section class="categorias">
+        <h2>Categorias em Destaque</h2>
+        <div class="categoria">
+          <h3>Ficção Científica</h3>
+          <p>Histórias de ficção científica que exploram novos mundos e tecnologias.</p>
+          <a href="#">Explorar</a>
+        </div>
+        <div class="categoria">
+          <h3>Romance</h3>
+          <p>Romances com tramas envolventes e personagens apaixonantes.</p>
+          <a href="#">Explorar</a>
+        </div>
+        <div class="categoria">
+          <h3>Fantasia</h3>
+          <p>Entre em mundos mágicos com criaturas fantásticas e aventuras épicas.</p>
+          <a href="#">Explorar</a>
+        </div>
+      </section>
     </section>
   </main>
-<script>
-  function toggleDropdown() {
-    const menu = document.getElementById("dropdown-menu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  }
 
-  window.onclick = function(event) {
-    if (!event.target.matches('.profile-pic')) {
-      const dropdown = document.getElementById("dropdown-menu");
-      if (dropdown && dropdown.style.display === "block") {
-        dropdown.style.display = "none";
-      }
+  <script>
+    function toggleDropdown() {
+      const menu = document.getElementById("dropdown-menu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
     }
-  };
-</script>
 
+    // Fechar o menu ao clicar fora
+    window.onclick = function(event) {
+      if (!event.target.matches('.profile-pic')) {
+        const dropdown = document.getElementById("dropdown-menu");
+        if (dropdown && dropdown.style.display === "block") {
+          dropdown.style.display = "none";
+        }
+      }
+    };
+  </script>
 
   <footer>
     <p>&copy; 2025 Portal de Histórias. Todos os direitos reservados.</p>
