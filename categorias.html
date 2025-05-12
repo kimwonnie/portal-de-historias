@@ -208,13 +208,12 @@
       </ul>
     </div>
   </main>
-<script>
+<<script>
   function toggleDropdown() {
     const menu = document.getElementById("dropdown-menu");
     menu.style.display = menu.style.display === "block" ? "none" : "block";
   }
 
-  // Fechar o menu ao clicar fora
   window.onclick = function(event) {
     if (!event.target.matches('.profile-pic')) {
       const dropdown = document.getElementById("dropdown-menu");
