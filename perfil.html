@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meu Perfil | Portal de Histórias</title>
+  <title>Perfil do Usuário | Portal de Histórias</title>
   <link rel="stylesheet" href="estilos.css" />
 </head>
 <body>
@@ -27,41 +27,77 @@
       </div>
     </section>
 
-    <section class="biografia">
-      <h2>Biografia</h2>
-      <p>Aqui vai uma breve descrição sobre o usuário, seus interesses e o que gosta de escrever ou ler.</p>
+    <!-- Mural de Atualizações -->
+    <section class="mural">
+      <h2>Atualizações</h2>
+      <textarea placeholder="Escreva uma atualização..."></textarea>
+      <button>Publicar</button>
+      <div class="mural-posts">
+        <div class="mural-post">
+          <p><strong>Nova História:</strong> Acabei de publicar uma nova história! Confira!</p>
+        </div>
+        <div class="mural-post">
+          <p><strong>Atualização:</strong> A história 'Aventuras no Reino' foi atualizada com novos capítulos.</p>
+        </div>
+      </div>
     </section>
 
-    <section class="estatisticas">
-      <div class="estat-box">Histórias: <strong>5</strong></div>
-      <div class="estat-box">Favoritos: <strong>12</strong></div>
-      <div class="estat-box">Seguidores: <strong>32</strong></div>
+    <!-- Canal Privado -->
+    <section class="canal-privado">
+      <h2>Canal Privado com Leitores</h2>
+      <div class="mensagens">
+        <div class="mensagem">
+          <strong>Leitor1:</strong> Oi! Adorei sua história! Quando sai o próximo capítulo?
+        </div>
+        <div class="mensagem">
+          <strong>Leitor2:</strong> Sua escrita é incrível! Me avise quando publicar algo novo!
+        </div>
+      </div>
+      <textarea placeholder="Envie uma mensagem privada..."></textarea>
+      <button>Enviar</button>
     </section>
 
-    <section class="historias-publicadas">
-      <h2>Histórias Publicadas</h2>
-      <ul>
-        <li><a href="#">Título da História 1</a></li>
-        <li><a href="#">Título da História 2</a></li>
-        <li><a href="#">Título da História 3</a></li>
-      </ul>
+    <!-- Abas: Histórias, Favoritos, Comentários -->
+    <section class="abas">
+      <nav>
+        <ul class="abas-nav">
+          <li><a href="#historias">Histórias</a></li>
+          <li><a href="#favoritos">Favoritos</a></li>
+          <li><a href="#comentarios">Comentários</a></li>
+        </ul>
+      </nav>
+
+      <!-- Histórias -->
+      <section id="historias" class="aba">
+        <h2>Histórias Publicadas</h2>
+        <ul>
+          <li><a href="#">Título da História 1</a></li>
+          <li><a href="#">Título da História 2</a></li>
+          <li><a href="#">Título da História 3</a></li>
+        </ul>
+      </section>
+
+      <!-- Favoritos -->
+      <section id="favoritos" class="aba">
+        <h2>Favoritos</h2>
+        <ul>
+          <li><a href="#">História Favorita 1</a></li>
+          <li><a href="#">História Favorita 2</a></li>
+        </ul>
+      </section>
+
+      <!-- Comentários -->
+      <section id="comentarios" class="aba">
+        <h2>Comentários Recentes</h2>
+        <ul>
+          <li><strong>Leitor1:</strong> Amei sua história! Vai ter mais capítulos?</li>
+          <li><strong>Leitor2:</strong> Muito bom! Estou ansioso pelo próximo!</li>
+        </ul>
+      </section>
     </section>
+
   </main>
-<script>
-  function toggleDropdown() {
-    const menu = document.getElementById("dropdown-menu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  }
 
-  window.onclick = function(event) {
-    if (!event.target.matches('.profile-pic')) {
-      const dropdown = document.getElementById("dropdown-menu");
-      if (dropdown && dropdown.style.display === "block") {
-        dropdown.style.display = "none";
-      }
-    }
-  };
-</script>
   <footer>
     <p>&copy; 2025 Portal de Histórias. Todos os direitos reservados.</p>
   </footer>
