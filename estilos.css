@@ -122,3 +122,68 @@ footer {
   background-color: #6a0dad;
   color: white;
 }
+.perfil-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.perfil-topo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.perfil-foto {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #6a0dad;
+}
+
+.perfil-info h1 {
+  margin: 0;
+  color: #6a0dad;
+}
+
+.biografia {
+  margin-top: 30px;
+}
+
+.estatisticas {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+}
+
+.estat-box {
+  background: #f3f3f3;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  flex: 1;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.historias-publicadas {
+  margin-top: 40px;
+}
+
+.historias-publicadas ul {
+  list-style: none;
+  padding: 0;
+}
+
+.historias-publicadas li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.historias-publicadas a {
+  text-decoration: none;
+  color: #6a0dad;
+}
