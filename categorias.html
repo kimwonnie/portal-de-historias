@@ -81,23 +81,29 @@
 
     .main-content h2 {
       color: #5d3a9b;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
-    .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 20px;
-    }
-
-    .category-card {
+    .category-section {
+      margin-bottom: 40px;
       background-color: white;
+      padding: 20px;
       border-radius: 10px;
-      padding: 15px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      text-align: center;
-      font-weight: bold;
+    }
+
+    .category-section h3 {
       color: #5d3a9b;
+      margin-bottom: 10px;
+    }
+
+    .book-list {
+      list-style: none;
+      padding-left: 20px;
+    }
+
+    .book-list li {
+      margin-bottom: 5px;
     }
 
     footer {
@@ -107,7 +113,6 @@
       padding: 15px 10px;
       margin-top: 40px;
     }
-
   </style>
 </head>
 <body>
@@ -129,16 +134,78 @@
   </header>
 
   <main class="main-content">
-    <h2>Explore Categorias</h2>
-    <div class="categories-grid">
-      <div class="category-card">Romance</div>
-      <div class="category-card">Aventura</div>
-      <div class="category-card">Suspense</div>
-      <div class="category-card">Fantasia</div>
-      <div class="category-card">Terror</div>
-      <div class="category-card">Drama</div>
-      <div class="category-card">Comédia</div>
-      <div class="category-card">Ficção Científica</div>
+    <h2>Explore Categorias de Histórias</h2>
+
+    <div class="category-section">
+      <h3>Romance</h3>
+      <ul class="book-list">
+        <li>Amor em Segredo</li>
+        <li>Entre Versos e Abraços</li>
+        <li>Nosso Último Verão</li>
+      </ul>
+    </div>
+
+    <div class="category-section">
+      <h3>Aventura</h3>
+      <ul class="book-list">
+        <li>O Guardião das Terras Perdidas</li>
+        <li>Viagem à Ilha Desconhecida</li>
+        <li>Mapas e Mistérios</li>
+      </ul>
+    </div>
+
+    <div class="category-section">
+      <h3>Suspense</h3>
+      <ul class="book-list">
+        <li>Silêncio na Noite</li>
+        <li>O Enigma do Quarto Escuro</li>
+        <li>Vigilância Invisível</li>
+      </ul>
+    </div>
+
+    <div class="category-section">
+      <h3>Fantasia</h3>
+      <ul class="book-list">
+        <li>Reino de Étherion</li>
+        <li>Asas de Cristal</li>
+        <li>O Magista Esquecido</li>
+      </ul>
+    </div>
+
+    <div class="category-section">
+      <h3>Terror</h3>
+      <ul class="book-list">
+        <li>A Mansão dos Sussurros</li>
+        <li>O Sorriso do Espantalho</li>
+        <li>Eco das Sombras</li>
+      </ul>
+    </div>
+
+    <div class="category-section">
+      <h3>Comédia</h3>
+      <ul class="book-list">
+        <li>Diário de um Enrolado</li>
+        <li>Família Fora de Controle</li>
+        <li>Caos no Condomínio</li>
+      </ul>
+    </div>
+
+    <div class="category-section">
+      <h3>Ficção Científica</h3>
+      <ul class="book-list">
+        <li>Projeto Nebulosa</li>
+        <li>Entre Estrelas e Máquinas</li>
+        <li>O Último Humano</li>
+      </ul>
+    </div>
+
+    <div class="category-section">
+      <h3>Drama</h3>
+      <ul class="book-list">
+        <li>Fragmentos de Mim</li>
+        <li>O Peso do Silêncio</li>
+        <li>Cartas Nunca Enviadas</li>
+      </ul>
     </div>
   </main>
 
