@@ -1,40 +1,92 @@
+/* Estilo geral do body */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background: #f9f9f9;
   color: #333;
 }
 
-header {
-  background-color: #6a0dad;
-  color: white;
-  padding: 1rem;
-  text-align: center;
-}
-
 .navbar {
+  background: linear-gradient(to right, #6a0dad, #888);
+  color: white;
+  padding: 10px 20px;
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
+  margin-right: 15px;
 }
 
-main {
-  padding: 2rem;
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Estilos para o menu suspenso (Dropdown) */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #6a0dad;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #555;
+}
+
+/* Outras seções da página */
+h1 {
+  text-align: center;
+  color: #6a0dad;
 }
 
 footer {
-  background-color: #333;
-  color: white;
   text-align: center;
-  padding: 1rem;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
+  padding: 10px;
+  background-color: #6a0dad;
+  color: white;
 }
