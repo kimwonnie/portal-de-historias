@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <title>Cadastro - Portal de Histórias</title>
   <link rel="stylesheet" href="style.css">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';">
-  <meta name="referrer" content="no-referrer">
 </head>
 <body>
   <header class="site-header">
@@ -15,7 +13,7 @@
         <a href="index.html">Início</a>
         <a href="perfil.html">Perfil</a>
         <a href="login.html">Login</a>
-        <a href="cadastro.html" class="active">Cadastro</a>
+        <a href="cadastro.html">Cadastro</a>
         <a href="categorias.html">Categorias</a>
       </nav>
     </div>
@@ -25,18 +23,15 @@
     <section class="cadastro-section">
       <h2>Crie sua Conta</h2>
       <form id="cadastroForm" autocomplete="off" onsubmit="return salvarCadastroLocal()">
-        <input type="text" id="nome" placeholder="Nome completo" required maxlength="80">
-        
+        <input type="text" id="nome" placeholder="Nome completo" required>
         <input type="email" id="email" placeholder="E-mail" required>
         <input type="email" id="confirmEmail" placeholder="Confirmar E-mail" required>
-        
         <input type="date" id="dataNascimento" required>
-
-        <input type="text" id="generos" placeholder="Gêneros preferidos (separar por vírgula)" required maxlength="100">
-        <textarea id="biografia" placeholder="Escreva sua biografia" required maxlength="300"></textarea>
+        <input type="text" id="generos" placeholder="Gêneros preferidos (separar por vírgula)" required>
+        <textarea id="biografia" placeholder="Escreva sua biografia" required></textarea>
 
         <div class="senha-container">
-          <input type="password" id="senha" placeholder="Senha (mín. 8 caracteres)" minlength="8" required>
+          <input type="password" id="senha" placeholder="Senha" required>
           <span class="eye-icon" onclick="toggleSenha('senha', this)">👁️</span>
         </div>
 
@@ -55,10 +50,9 @@
   </footer>
 
   <script>
-    function toggleSenha(id, el) {
+    function toggleSenha(id, btn) {
       const input = document.getElementById(id);
       input.type = input.type === "password" ? "text" : "password";
-      el.textContent = input.type === "password" ? "👁️" : "🙈";
     }
 
     function validarCadastro() {
@@ -77,55 +71,29 @@
         return false;
       }
 
-      if (senha.length < 8) {
-        alert("A senha deve conter no mínimo 8 caracteres.");
-        return false;
-      }
-
       return true;
     }
-  </script>
-  <script>
-  function toggleDropdown() {
-    const menu = document.getElementById("dropdown-menu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  }
 
-  window.onclick = function(event) {
-    if (!event.target.matches('.profile-pic')) {
-      const dropdown = document.getElementById("dropdown-menu");
-      if (dropdown && dropdown.style.display === "block") {
-        dropdown.style.display = "none";
-      }
+    function salvarCadastroLocal() {
+      if (!validarCadastro()) return false;
+
+      const usuario = {
+        nome: document.getElementById("nome").value,
+        email: document.getElementById("email").value,
+        dataNascimento: document.getElementById("dataNascimento").value,
+        generos: document.getElementById("generos").value,
+        biografia: document.getElementById("biografia").value,
+        senha: btoa(document.getElementById("senha").value) // codificação básica
+      };
+
+      let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+      usuarios.push(usuario);
+      localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+      alert("Cadastro realizado com sucesso!");
+      document.getElementById("cadastroForm").reset();
+      return false;
     }
-  };
-</script>
-<script>
-  // Mantém validação do front
-  function salvarCadastroLocal() {
-    if (!validarCadastro()) return false;
-
-    const usuario = {
-      nome: document.getElementById("nome").value,
-      email: document.getElementById("email").value,
-      dataNascimento: document.getElementById("dataNascimento").value,
-      generos: document.getElementById("generos").value,
-      biografia: document.getElementById("biografia").value,
-      senha: btoa(document.getElementById("senha").value) // Base64 (não seguro p/ produção)
-    };
-
-    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-    usuarios.push(usuario);
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
-
-    alert("Cadastro realizado com sucesso!");
-    document.getElementById("cadastroForm").reset();
-    return false; // evita recarregar a página
-  }
-</script>
-
- <footer>
-    © 2025 Portal de Histórias. Todos os direitos reservados.
-  </footer>
+  </script>
 </body>
 </html>
