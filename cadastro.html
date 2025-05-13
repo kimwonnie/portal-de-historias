@@ -24,7 +24,7 @@
   <main class="main-content">
     <section class="cadastro-section">
       <h2>Crie sua Conta</h2>
-      <form id="cadastroForm" autocomplete="off" onsubmit="return validarCadastro()">
+      <form id="cadastroForm" autocomplete="off" onsubmit="return salvarCadastroLocal()">
         <input type="text" id="nome" placeholder="Nome completo" required maxlength="80">
         
         <input type="email" id="email" placeholder="E-mail" required>
@@ -99,6 +99,29 @@
       }
     }
   };
+</script>
+<script>
+  // Mantém validação do front
+  function salvarCadastroLocal() {
+    if (!validarCadastro()) return false;
+
+    const usuario = {
+      nome: document.getElementById("nome").value,
+      email: document.getElementById("email").value,
+      dataNascimento: document.getElementById("dataNascimento").value,
+      generos: document.getElementById("generos").value,
+      biografia: document.getElementById("biografia").value,
+      senha: btoa(document.getElementById("senha").value) // Base64 (não seguro p/ produção)
+    };
+
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    usuarios.push(usuario);
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+    alert("Cadastro realizado com sucesso!");
+    document.getElementById("cadastroForm").reset();
+    return false; // evita recarregar a página
+  }
 </script>
 
  <footer>
