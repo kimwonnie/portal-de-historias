@@ -5,49 +5,228 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login | Portal de Histórias</title>
   <link rel="stylesheet" href="estilos.css" />
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Navbar escura com texto branco */
+    header {
+      background-color: #222;
+      padding: 10px 20px;
+      color: white;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .navbar a:hover {
+      color: #ddd;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .profile-container {
+      position: relative;
+    }
+
+    .profile-pic {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      object-fit: cover;
+    }
+
+    #dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 40px;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      min-width: 150px;
+      z-index: 100;
+    }
+
+    #dropdown-menu a {
+      display: block;
+      padding: 10px;
+      color: #333;
+      text-decoration: none;
+    }
+
+    #dropdown-menu a:hover {
+      background-color: #f5f5f5;
+    }
+
+    /* Login form centralizado */
+    .main-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .login-section {
+      background-color: #fff;
+      padding: 40px;
+      border: 1px solid #dbdbdb;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 350px;
+      text-align: center;
+    }
+
+    .login-section h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    .login-section input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .mostrar-senha {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 5px;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 10px;
+      background-color: #3897f0;
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-login:hover {
+      background-color: #287dc0;
+    }
+
+    .login-section p {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .login-section a {
+      color: #3897f0;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
 </head>
 <body>
+
   <header>
-    <nav class="navbar">
-      <a href="index.html">Início</a>
-      <a href="categorias.html">Categorias</a>
-      <a href="perfil.html">Perfil</a>
-      <a href="login.html">Login</a>
-    </nav>
-    <h1>Portal de Histórias</h1>
+    <div class="navbar">
+      <div class="logo">Portal de Histórias</div>
+      <div class="nav-links">
+        <a href="index.html">Início</a>
+        <a href="categorias.html">Categorias</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="login.html">Login</a>
+      </div>
+      <div class="profile-container">
+        <img src="usuario.jpg" alt="Perfil" class="profile-pic" onclick="toggleDropdown()" />
+        <div id="dropdown-menu">
+          <a href="perfil.html">Meu Perfil</a>
+          <a href="#">Configurações</a>
+          <a href="#">Sair</a>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <section class="login-form">
-      <h2>Entrar</h2>
-      <form>
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" required />
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" required />
-        <button type="submit">Entrar</button>
+  <main class="main-content">
+    <section class="login-section">
+      <h2>Entrar na Conta</h2>
+      <form id="loginForm">
+        <input type="text" id="usuario" placeholder="Nome de usuário" required />
+        <input type="password" id="senha" placeholder="Senha" required />
+        <div class="mostrar-senha">
+          <input type="checkbox" id="mostrarSenha" onclick="toggleSenha()"> 
+          <label for="mostrarSenha">Mostrar senha</label>
+        </div>
+        <button type="submit" class="btn-login">Entrar</button>
       </form>
+      <p>Não tem conta? <a href="cadastro.html">Cadastre-se aqui</a>.</p>
     </section>
   </main>
-<script>
-  function toggleDropdown() {
-    const menu = document.getElementById("dropdown-menu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  }
-
-  window.onclick = function(event) {
-    if (!event.target.matches('.profile-pic')) {
-      const dropdown = document.getElementById("dropdown-menu");
-      if (dropdown && dropdown.style.display === "block") {
-        dropdown.style.display = "none";
-      }
-    }
-  };
-</script>
-
 
   <footer>
     <p>&copy; 2025 Portal de Histórias. Todos os direitos reservados.</p>
   </footer>
+
+  <script>
+    function toggleSenha() {
+      const senha = document.getElementById("senha");
+      senha.type = senha.type === "password" ? "text" : "password";
+    }
+
+    function toggleDropdown() {
+      const menu = document.getElementById("dropdown-menu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    window.onclick = function(event) {
+      if (!event.target.matches('.profile-pic')) {
+        const dropdown = document.getElementById("dropdown-menu");
+        if (dropdown && dropdown.style.display === "block") {
+          dropdown.style.display = "none";
+        }
+      }
+    };
+  </script>
 </body>
 </html>
