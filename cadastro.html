@@ -1,11 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cadastro - Portal de Histórias</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #5c2d91, #cccccc);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      background-color: #fff;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #5c2d91;
+      font-weight: bold;
+    }
+
+    .profile-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .profile-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      border: 1px solid #ccc;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+      margin-top: 10px;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 10px;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 40px 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .cadastro-section {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .cadastro-section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .senha-container {
+      position: relative;
+    }
+
+    .eye-icon {
+      position: absolute;
+      right: 10px;
+      top: 12px;
+      cursor: pointer;
+    }
+
+    .btn-cadastrar {
+      width: 100%;
+      background-color: #5c2d91;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btn-cadastrar:hover {
+      background-color: #4a1c7a;
+    }
+
+    .site-footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #f0f0f0;
+      border-top: 1px solid #ccc;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- NAVBAR -->
   <header class="site-header">
     <div class="navbar">
       <div class="logo">📚 Portal de Histórias</div>
@@ -16,27 +145,36 @@
         <a href="cadastro.html">Cadastro</a>
         <a href="categorias.html">Categorias</a>
       </nav>
+      <div class="profile-menu">
+        <img src="https://via.placeholder.com/40" alt="Perfil" class="profile-image" onclick="toggleDropdown()" />
+        <div class="dropdown-menu" id="dropdown">
+          <a href="perfil.html">Meu Perfil</a>
+          <a href="configuracoes.html">Configurações</a>
+          <a href="#" onclick="logout()">Logout</a>
+        </div>
+      </div>
     </div>
   </header>
 
+  <!-- CONTEÚDO -->
   <main class="main-content">
     <section class="cadastro-section">
       <h2>Crie sua Conta</h2>
-      <form id="cadastroForm" autocomplete="off" onsubmit="return salvarCadastroLocal()">
-        <input type="text" id="nome" placeholder="Nome completo" required>
-        <input type="email" id="email" placeholder="E-mail" required>
-        <input type="email" id="confirmEmail" placeholder="Confirmar E-mail" required>
-        <input type="date" id="dataNascimento" required>
-        <input type="text" id="generos" placeholder="Gêneros preferidos (separar por vírgula)" required>
+      <form id="cadastroForm" onsubmit="return salvarCadastroLocal()">
+        <input type="text" id="nome" placeholder="Nome completo" required />
+        <input type="email" id="email" placeholder="E-mail" required />
+        <input type="email" id="confirmEmail" placeholder="Confirmar E-mail" required />
+        <input type="date" id="dataNascimento" required />
+        <input type="text" id="generos" placeholder="Gêneros preferidos (separar por vírgula)" required />
         <textarea id="biografia" placeholder="Escreva sua biografia" required></textarea>
 
         <div class="senha-container">
-          <input type="password" id="senha" placeholder="Senha" required>
+          <input type="password" id="senha" placeholder="Senha" required />
           <span class="eye-icon" onclick="toggleSenha('senha', this)">👁️</span>
         </div>
 
         <div class="senha-container">
-          <input type="password" id="confirmSenha" placeholder="Confirmar Senha" required>
+          <input type="password" id="confirmSenha" placeholder="Confirmar Senha" required />
           <span class="eye-icon" onclick="toggleSenha('confirmSenha', this)">👁️</span>
         </div>
 
@@ -45,14 +183,26 @@
     </section>
   </main>
 
+  <!-- RODAPÉ -->
   <footer class="site-footer">
     <p>© 2025 Portal de Histórias</p>
   </footer>
 
+  <!-- SCRIPT -->
   <script>
-    function toggleSenha(id, btn) {
+    function toggleSenha(id, icon) {
       const input = document.getElementById(id);
       input.type = input.type === "password" ? "text" : "password";
+    }
+
+    function toggleDropdown() {
+      const menu = document.getElementById("dropdown");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    function logout() {
+      alert("Logout realizado com sucesso!");
+      // Aqui você poderia apagar dados do localStorage se quiser
     }
 
     function validarCadastro() {
@@ -83,7 +233,7 @@
         dataNascimento: document.getElementById("dataNascimento").value,
         generos: document.getElementById("generos").value,
         biografia: document.getElementById("biografia").value,
-        senha: btoa(document.getElementById("senha").value) // codificação básica
+        senha: btoa(document.getElementById("senha").value)
       };
 
       let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
