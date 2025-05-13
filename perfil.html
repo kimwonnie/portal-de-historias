@@ -5,35 +5,191 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Perfil do Usuário | Portal de Histórias</title>
   <link rel="stylesheet" href="estilos.css" />
+  <style>
+    /* Estilo base inspirado no Wattpad */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #6a1b9a;
+      padding: 10px 20px;
+      color: white;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .navbar a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .profile-container {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background-color: white;
+      color: #333;
+      display: none;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 150px;
+      z-index: 999;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 10px;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .dropdown a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .perfil-container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .perfil-topo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .perfil-foto {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    .perfil-info h1 {
+      margin: 0;
+    }
+
+    .mural textarea,
+    .conversa textarea {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      resize: vertical;
+    }
+
+    .mural button,
+    .conversa button {
+      margin-top: 5px;
+      background-color: #6a1b9a;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .mural-posts {
+      margin-top: 20px;
+    }
+
+    .mural-post {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .conversa {
+      background-color: #fafafa;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .abas-nav {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 30px 0 10px 0;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .abas-nav li {
+      margin-right: 20px;
+    }
+
+    .abas-nav a {
+      text-decoration: none;
+      padding: 10px;
+      color: #6a1b9a;
+      font-weight: bold;
+    }
+
+    .aba {
+      margin-top: 20px;
+    }
+
+    footer {
+      background-color: #eee;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Barra de navegação -->
+  <!-- Navbar -->
   <header>
     <nav class="navbar">
-      <a href="index.html" class="logo">Portal de Histórias</a>
-      <a href="index.html">Início</a>
-      <a href="categorias.html">Categorias</a>
-      <a href="login.html">Login</a>
-
-      <!-- Menu suspenso -->
+      <div class="left-links">
+        <a href="index.html" class="logo">Portal de Histórias</a>
+        <a href="index.html">Início</a>
+        <a href="categorias.html">Categorias</a>
+        <a href="login.html">Login</a>
+      </div>
       <div class="profile-container">
-        <img src="https://via.placeholder.com/40" alt="Foto de perfil" class="profile-pic">
-        <div class="dropdown">
-          <button class="dropbtn">Menu</button>
-          <div class="dropdown-content">
-            <a href="#">Configurações</a>
-            <a href="#">Sair</a>
-          </div>
+        <img src="https://via.placeholder.com/40" alt="Foto de perfil" class="profile-pic" onclick="toggleDropdown()" />
+        <div id="dropdown-menu" class="dropdown">
+          <a href="#">Configurações</a>
+          <a href="#">Sair</a>
         </div>
       </div>
     </nav>
   </header>
 
-  <!-- Conteúdo principal do perfil -->
+  <!-- Perfil -->
   <main class="perfil-container">
     <section class="perfil-topo">
-      <img src="https://via.placeholder.com/120" alt="Foto de perfil" class="perfil-foto">
+      <img src="https://via.placeholder.com/120" alt="Foto de perfil" class="perfil-foto" />
       <div class="perfil-info">
         <h1>Nome do Usuário</h1>
         <p>Membro desde: Janeiro de 2025</p>
@@ -42,9 +198,8 @@
       </div>
     </section>
 
-    <!-- Mural de Atualizações -->
     <section class="mural">
-      <h2>Atualizações</h2>
+      <h2>Mural</h2>
       <textarea placeholder="Escreva uma atualização..."></textarea>
       <button>Publicar</button>
       <div class="mural-posts">
@@ -54,35 +209,30 @@
       </div>
     </section>
 
-    <!-- Canal Privado com Leitores -->
     <section class="canal-privado">
       <h2>Canal Privado com Leitores</h2>
 
-      <!-- Conversa com Leitor 1 -->
       <div class="conversa">
         <h3>Leitor1</h3>
         <div class="mensagens">
-          <div class="mensagem"><strong>Leitor1:</strong> Oi! Amei sua história! Quando sai o próximo capítulo?</div>
-          <div class="mensagem"><strong>Você:</strong> Obrigado! O próximo capítulo sai na próxima semana.</div>
+          <div class="mensagem"><strong>Leitor1:</strong> Oi! Amei sua história!</div>
+          <div class="mensagem"><strong>Você:</strong> Obrigado! Novo capítulo em breve.</div>
         </div>
         <textarea placeholder="Escreva uma mensagem..."></textarea>
         <button>Enviar</button>
       </div>
 
-      <!-- Conversa com Leitor 2 -->
       <div class="conversa">
         <h3>Leitor2</h3>
         <div class="mensagens">
-          <div class="mensagem"><strong>Leitor2:</strong> Seu trabalho é incrível! Me avise quando publicar mais capítulos.</div>
-          <div class="mensagem"><strong>Você:</strong> Claro! Vou manter todos atualizados.</div>
+          <div class="mensagem"><strong>Leitor2:</strong> Me avise quando sair mais capítulos.</div>
+          <div class="mensagem"><strong>Você:</strong> Pode deixar!</div>
         </div>
         <textarea placeholder="Escreva uma mensagem..."></textarea>
         <button>Enviar</button>
       </div>
-
     </section>
 
-    <!-- Abas: Histórias, Favoritos, Comentários -->
     <section class="abas">
       <nav>
         <ul class="abas-nav">
@@ -95,8 +245,8 @@
       <section id="historias" class="aba">
         <h2>Histórias Publicadas</h2>
         <ul>
-          <li><a href="#">Título da História 1</a></li>
-          <li><a href="#">Título da História 2</a></li>
+          <li><a href="#">História 1</a></li>
+          <li><a href="#">História 2</a></li>
         </ul>
       </section>
 
@@ -104,36 +254,36 @@
         <h2>Favoritos</h2>
         <ul>
           <li><a href="#">História Favorita 1</a></li>
-          <li><a href="#">História Favorita 2</a></li>
         </ul>
       </section>
 
       <section id="comentarios" class="aba">
         <h2>Comentários Recentes</h2>
         <ul>
-          <li><strong>Leitor1:</strong> Amei sua história! Vai ter mais capítulos?</li>
+          <li><strong>Leitor1:</strong> Sua história é incrível!</li>
         </ul>
       </section>
     </section>
   </main>
-<<script>
-  function toggleDropdown() {
-    const menu = document.getElementById("dropdown-menu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  }
 
-  window.onclick = function(event) {
-    if (!event.target.matches('.profile-pic')) {
-      const dropdown = document.getElementById("dropdown-menu");
-      if (dropdown && dropdown.style.display === "block") {
-        dropdown.style.display = "none";
-      }
-    }
-  };
-</script>
+  <!-- Rodapé -->
   <footer>
     <p>&copy; 2025 Portal de Histórias. Todos os direitos reservados.</p>
   </footer>
 
+  <!-- Script do dropdown -->
+  <script>
+    function toggleDropdown() {
+      const dropdown = document.getElementById("dropdown-menu");
+      dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    }
+
+    window.onclick = function(event) {
+      if (!event.target.closest('.profile-container')) {
+        const dropdown = document.getElementById("dropdown-menu");
+        if (dropdown) dropdown.style.display = "none";
+      }
+    };
+  </script>
 </body>
 </html>
