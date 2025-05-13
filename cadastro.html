@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro - Portal de Histórias</title>
+  <link rel="stylesheet" href="style.css">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';">
+  <meta name="referrer" content="no-referrer">
+</head>
+<body>
+  <header class="site-header">
+    <div class="navbar">
+      <div class="logo">📚 Portal de Histórias</div>
+      <nav>
+        <a href="index.html">Início</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="login.html">Login</a>
+        <a href="cadastro.html" class="active">Cadastro</a>
+        <a href="categorias.html">Categorias</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="cadastro-section">
+      <h2>Crie sua Conta</h2>
+      <form id="cadastroForm" autocomplete="off" onsubmit="return validarCadastro()">
+        <input type="text" id="nome" placeholder="Nome completo" required maxlength="80">
+        
+        <input type="email" id="email" placeholder="E-mail" required>
+        <input type="email" id="confirmEmail" placeholder="Confirmar E-mail" required>
+        
+        <input type="date" id="dataNascimento" required>
+
+        <input type="text" id="generos" placeholder="Gêneros preferidos (separar por vírgula)" required maxlength="100">
+        <textarea id="biografia" placeholder="Escreva sua biografia" required maxlength="300"></textarea>
+
+        <div class="senha-container">
+          <input type="password" id="senha" placeholder="Senha (mín. 8 caracteres)" minlength="8" required>
+          <span class="eye-icon" onclick="toggleSenha('senha', this)">👁️</span>
+        </div>
+
+        <div class="senha-container">
+          <input type="password" id="confirmSenha" placeholder="Confirmar Senha" required>
+          <span class="eye-icon" onclick="toggleSenha('confirmSenha', this)">👁️</span>
+        </div>
+
+        <button type="submit" class="btn-cadastrar">Cadastrar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Portal de Histórias</p>
+  </footer>
+
+  <script>
+    function toggleSenha(id, el) {
+      const input = document.getElementById(id);
+      input.type = input.type === "password" ? "text" : "password";
+      el.textContent = input.type === "password" ? "👁️" : "🙈";
+    }
+
+    function validarCadastro() {
+      const email = document.getElementById("email").value;
+      const confirmEmail = document.getElementById("confirmEmail").value;
+      const senha = document.getElementById("senha").value;
+      const confirmSenha = document.getElementById("confirmSenha").value;
+
+      if (email !== confirmEmail) {
+        alert("Os e-mails não coincidem.");
+        return false;
+      }
+
+      if (senha !== confirmSenha) {
+        alert("As senhas não coincidem.");
+        return false;
+      }
+
+      if (senha.length < 8) {
+        alert("A senha deve conter no mínimo 8 caracteres.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>
