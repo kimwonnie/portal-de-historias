@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Escrever Novo Capítulo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">📚 Portal de Histórias</div>
+    <nav class="site-nav">
+      <a href="#">Início</a>
+      <a href="#">Perfil</a>
+      <a href="#">Login</a>
+      <a href="#">Categorias</a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <section class="novo-capitulo-section">
+      <h2> Novo Capítulo</h2>
+      <form id="novoCapituloForm">
+        <label for="capaCapitulo" class="capa-label"></label>
+        <input type="file" id="capaCapitulo" accept="image/*">
+        <img id="previewCapa" src="" alt="Pré-visualização da capa" style="display:none; max-width: 100%; margin-bottom: 20px;"/>
+
+        <input type="text" id="tituloCapitulo" placeholder="Título do Capítulo" required>
+        <textarea id="conteudoCapitulo" placeholder="Escreva o conteúdo do capítulo aqui..." required></textarea>
+        
+        <label class="checkbox-container">
+          <input type="checkbox" id="finalCapitulo">
+          <span class="checkmark"></span> Este é o capítulo final da história
+        </label>
+        
+        <button type="submit" class="btn-salvar">Salvar Capítulo</button>
+      </form>
+    </section>
+  </main>
+  <script>
+ document.getElementById('novoCapituloForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const titulo = document.getElementById('tituloCapitulo').value.trim();
+  const conteudo = document.getElementById('conteudoCapitulo').value.trim();
+  const ehFinal = document.getElementById('finalCapitulo').checked;
+
+  if (!titulo || !conteudo) {
+    alert("Por favor, preencha todos os campos obrigatórios.");
+    return;
+  }
+
+  // Simula envio e segurança de dados
+  const capitulo = {
+    titulo,
+    conteudo,
+    final: ehFinal,
+    dataCriacao: new Date().toISOString(),
+    autor: localStorage.getItem('usuarioLogado') || 'Desconhecido'
+  };
+
+  // Salva temporariamente no localStorage
+  const capitulos = JSON.parse(localStorage.getItem('capitulos') || '[]');
+  capitulos.push(capitulo);
+  localStorage.setItem('capitulos', JSON.stringify(capitulos));
+
+  alert('Capítulo salvo com sucesso!');
+  window.location.href = '#'; // Redirecionar para página da história ou perfil
+});
+
+  </script>
+  <footer class="site-footer">
+    <p>© 2025 Portal de Histórias</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

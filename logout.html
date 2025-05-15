@@ -1,0 +1,92 @@
+<header class="navbar">
+  <div class="logo">Portal de Histórias</div>
+  <nav class="site-nav">
+    <a href="#">Início</a>
+    <a href="#">Categorias</a>
+    <a href="#">Login</a>
+    <a href="#">Cadastro</a>
+  </nav>
+  <div class="profile-area">
+    <img src="https://i.pinimg.com/736x/2a/f5/1f/2af51f73597aec1b4658832d5e34f35d.jpg" class="avatar" id="avatar">
+    <div class="dropdown-menu" id="dropdown">
+      <a href="#">Meu Perfil</a>
+      <a href="#">Minhas Histórias</a>
+      <a href="#">Editar Perfil</a>
+      <a href="#">Favoritos</a>
+      <a href="#" id="btn-sair">Sair</a>
+    </div>
+  </div>
+</header>
+
+<main class="main-content">
+  <section class="destaques">
+    <h2>Romance</h2>
+    <div class="cards-container">
+      <div class="historia-card">
+        <h3>Doce Vingança</h3>
+        <p>E uma dessas pessoas foi Seung Woo que veio de uma escola que ficava para o outro lado da cidade, porém assim como Jin Hyuk ele acabou tendo que se mudar para este outro bairro, porém ele foi por conta do trabalho dos pais dele que foram transferidos para uma filial da empresa que eles trabalhavam que ficava ali perto da escola então ficaria bem mais favorável ele trocar de escola...</p>
+        <a href="#" class="btn-leia">Leia mais</a>
+      </div>
+      <div class="historia-card">
+        <h3>A maldição de Hallowen</h3>
+        <p>No milênio passado, quando o mundo era habitado por vários seres místicos vivendo juntos com os humanos em harmonia necessária para que o mundo fosse harmonioso e belo. 
+Nesse mundo existem várias espécies de seres místicos que iam de fadas a animais falantes, nesse momento do século as criaturas viviam sempre em paz e união com todos. 
+...</p>
+        <a href="#" class="btn-leia">Leia mais</a>
+      </div>
+     <div id="confirmacao-sair">
+  <div class="caixa">
+    <p>Deseja realmente sair do site?</p>
+    <button id="btn-confirmar">Sim</button>
+    <button id="btn-cancelar">Cancelar</button>
+  </div>
+</div>
+ 
+    </div>
+  </section>
+</main>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const avatar = document.getElementById("avatar");
+  const dropdown = document.getElementById("dropdown");
+  const btnSair = document.getElementById("btn-sair");
+  const modal = document.getElementById("confirmacao-sair");
+  const btnConfirmar = document.getElementById("btn-confirmar");
+  const btnCancelar = document.getElementById("btn-cancelar");
+
+  // Abrir menu suspenso
+  avatar.addEventListener("click", () => {
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+  });
+
+  // Fechar menu clicando fora
+  window.addEventListener("click", function (e) {
+    if (!avatar.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.style.display = "none";
+    }
+  });
+
+  // Abrir modal de confirmação
+  btnSair.addEventListener("click", function (e) {
+    e.preventDefault();
+    modal.style.display = "flex";
+  });
+
+  // Cancelar logout
+  btnCancelar.addEventListener("click", function () {
+    modal.style.display = "none";
+  });
+
+  // Confirmar logout
+  btnConfirmar.addEventListener("click", function () {
+    alert("Logout efetuado!");
+    modal.style.display = "none";
+    dropdown.style.display = "none";
+    // window.location.href = "index.html"; // Redirecionamento opcional
+  });
+});
+</script>
+<footer class="site-footer">
+  <p>© 2025 Portal de Histórias</p>
+</footer>
+

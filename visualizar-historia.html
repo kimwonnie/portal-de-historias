@@ -1,0 +1,108 @@
+<header class="navbar">
+    <div class="logo-container">
+  <img id="logo-img" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhT6cO5bI0-KmE_YoKJLElLaCs0otsfZqQJgMCxG-wyyYZ581ut5cMDHNT_ac_sichImd4LG3eegIGnel9d7zP74Iqbv3r8Cb49FR0eMl0ct7XpuadzBW6wDFSsOheh0V-AxQ4ukzOOnId1dR5X9IkQVzXpLu2-0NvONYxyPnGNqXJEdehKmQ3kTytm2xo/s320/logo.png" alt="Logo do Site">
+</div>
+    <div class="logo"> Portal de Histórias</div>
+</div>
+  <nav class="site-nav">
+    <a href="#">Início</a>
+    <a href="#">Categorias</a>
+    <a href="#">Perfil</a>
+  </nav>
+  <div class="profile-area">
+    <img src="https://i.pinimg.com/736x/2a/f5/1f/2af51f73597aec1b4658832d5e34f35d.jpg" class="avatar" id="avatar">
+    <div class="dropdown-menu" id="dropdown">
+      <a href="#">Meu Perfil</a>
+      <a href="#">Minhas Histórias</a>
+      <a href="#">Editar Perfil</a>
+      <a href="#" id="btn-sair">Sair</a>
+    </div>
+  </div>
+</header>
+
+<main class="leitura-container">
+  <div class="leitura-header">
+    <h2>A maldição de Hallowen</h2>
+    <div class="leitura-controles">
+      <button class="btn-favorito" id="favoritarBtn">💜 Favoritar</button>
+      <label class="switch">
+        <input type="checkbox" id="modo-escuro-toggle">
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </div>
+
+  <article class="capitulo-leitura">
+    <h3>Capítulo 1: O Começo</h3>
+    <p>No milênio passado, quando o mundo era habitado por vários seres místicos vivendo juntos com os humanos em harmonia necessária para que o mundo fosse harmonioso e belo. 
+Nesse mundo existem várias espécies de seres místicos que iam de fadas a animais falantes, nesse momento do século as criaturas viviam sempre em paz e união com todos. 
+</p>
+    <p>Nesse período já existiam hierarquias de poder onde toda espécie ou conjunto de espécie tinham um representante no conselho ministerial onde os humanos sempre estiveram presente junto com os seres místicos. Existiam também seres híbridos que normalmente eram resultado do cruzamento de duas espécies e normalmente eles seriam metade de cada espécie, porém haviam seres que possuíam poderes e semelhanças a mais de duas espécies chegando a ter algo específico de até mesmo 5 espécies diferentes. 
+</p>
+  </article>
+
+  <section class="comentarios">
+    <h4>Comentários</h4>
+    <input type="text" id="nome-usuario" placeholder="Seu nome" />
+    <textarea id="novo-comentario" placeholder="Escreva um comentário..."></textarea>
+    <button id="btn-enviar-comentario">Enviar</button>
+    <ul id="lista-comentarios"></ul>
+  </section>
+</main>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("modo-escuro-toggle");
+  const avatar = document.getElementById("avatar");
+  const dropdown = document.getElementById("dropdown");
+  const favoritarBtn = document.getElementById("favoritarBtn");
+  const btnSair = document.getElementById("btn-sair");
+
+  // Modo escuro
+  toggle.addEventListener("change", function () {
+    document.body.classList.toggle("dark-mode", this.checked);
+  });
+
+  // Menu suspenso
+  avatar.addEventListener("click", () => {
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+  });
+
+  window.addEventListener("click", function (e) {
+    if (!avatar.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.style.display = "none";
+    }
+  });
+
+  // Favoritar
+  favoritarBtn.addEventListener("click", () => {
+    favoritarBtn.textContent = "💜 Favoritado!";
+    favoritarBtn.disabled = true;
+  });
+
+  // Comentários
+   document.getElementById("btn-enviar-comentario").addEventListener("click", () => {
+    const nome = document.getElementById("nome-usuario").value.trim();
+    const texto = document.getElementById("novo-comentario").value.trim();
+    if (nome && texto) {
+      const novo = document.createElement("li");
+      novo.innerHTML = `<strong>${nome}:</strong> ${texto}`;
+      document.getElementById("lista-comentarios").appendChild(novo);
+      document.getElementById("nome-usuario").value = "";
+      document.getElementById("novo-comentario").value = "";
+    } else {
+      alert("Por favor, preencha seu nome e o comentário.");
+    }
+  });
+
+  // Logout (simples)
+  btnSair.addEventListener("click", (e) => {
+    e.preventDefault();
+    alert("Você saiu com sucesso.");
+  });
+});
+
+</script>
+
+<footer class="site-footer">
+  <p>© 2025 Portal de Histórias</p>
+</footer>

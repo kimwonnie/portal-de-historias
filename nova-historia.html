@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nova História</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html">Início</a>
+    <a href="perfil.html">Perfil</a>
+    <a href="login.html">Login</a>
+    <a href="categorias.html">Categorias</a>
+  </nav>
+
+  <!-- Formulário de Nova História -->
+  <form id="formNovaHistoria" enctype="multipart/form-data">
+    <h2>Nova História</h2>
+
+    <label for="capaHistoria">Capa da História (opcional)</label>
+    <input type="file" id="capaHistoria" name="capaHistoria" accept="image/*">
+    <div id="previewCapa"></div>
+
+    <label for="titulo">Título da História *</label>
+    <input type="text" id="titulo" name="titulo" required>
+
+    <label for="descricao">Descrição *</label>
+    <textarea id="descricao" name="descricao" rows="4" required></textarea>
+
+    <label for="primeiroCapitulo">Primeiro Capítulo (opcional)</label>
+    <textarea id="primeiroCapitulo" name="primeiroCapitulo" rows="10" placeholder="Escreva o primeiro capítulo aqui..."></textarea>
+
+    <button type="submit">Publicar História</button>
+  </form>
+<script>
+document.getElementById('capaHistoria').addEventListener('change', function(event) {
+  const arquivo = event.target.files[0];
+  const preview = document.getElementById('previewCapa');
+  preview.innerHTML = ''; // Limpa o preview anterior
+
+  if (arquivo && arquivo.type.startsWith('image/')) {
+    const leitor = new FileReader();
+    leitor.onload = function(e) {
+      const imagem = document.createElement('img');
+      imagem.src = e.target.result;
+      imagem.alt = 'Pré-visualização da Capa';
+      preview.appendChild(imagem);
+    };
+    leitor.readAsDataURL(arquivo);
+  } else if (arquivo) {
+    alert('Por favor, selecione um arquivo de imagem válido.');
+  }
+});
+</script>
+  <!-- Rodapé -->
+  <footer class="footer">
+    <p>&copy; 2025 MeuSite. Todos os direitos reservados. </pp>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<header class="site-header">
+  <div class="logo">📚 Portal de Histórias</div>
+  <nav class="site-nav">
+    <a href="#" onclick="navegar('inicio')">Início</a>
+    <a href="#" onclick="navegar('perfil')">Perfil</a>
+    <a href="#" onclick="navegar('login')">Login</a>
+    <a href="#" onclick="navegar('categorias')">Categorias</a>
+  </nav>
+</header>
+
+<main class="pagina-historia">
+  <section class="detalhes-historia">
+    <img id="capa-historia" src="https://via.placeholder.com/150x220" alt="Capa da História">
+    <div class="texto-historia">
+      <h1 id="titulo-historia">Doce Vingança</h1>
+      <p><strong>Autor:</strong> Womhyung Kim</p>
+      <p><strong>Status:</strong> <span id="status-historia">Em andamento</span></p>
+      <p><strong>Visualizações:</strong> <span id="contador-visitas">0</span></p>
+      <p><strong>Curtidas:</strong> <span id="contador-curtidas">0</span> <button onclick="curtirHistoria()">Curtir ❤️</button></p>
+      <button onclick="favoritarHistoria()">Favoritar ⭐</button>
+      <button onclick="compartilharHistoria()">Compartilhar 🔗</button>
+      <button onclick="denunciarHistoria()">Denunciar 🚫</button>
+    </div>
+  </section>
+
+  <section class="sumario">
+    <h2>Capítulos</h2>
+    <ul id="lista-capitulos">
+      <!-- Capítulos aparecem aqui -->
+    </ul>
+  </section>
+
+  <section class="conteudo-capitulo">
+    <h3 id="titulo-capitulo">Capítulo 1 - Um Novo Começo</h3>
+    <p id="texto-capitulo">Este é o conteúdo do primeiro capítulo...</p>
+    <div class="comentarios">
+      <h4>Comentários</h4>
+      <ul id="lista-comentarios"></ul>
+      <textarea id="novo-comentario" placeholder="Escreva um comentário..."></textarea>
+      <button onclick="adicionarComentario()">Comentar</button>
+    </div>
+  </section>
+</main>
+<script>
+let visualizacoes = 0;
+let curtidas = 0;
+let comentarios = [];
+let capitulos = [
+  { titulo: "Capítulo 1 - Um Novo Começo", texto: "Este é o conteúdo do primeiro capítulo..." },
+  { titulo: "Capítulo 2 - O Mistério", texto: "Aqui começa o segundo capítulo com muito suspense." }
+];
+
+// Aumentar contagem de visitas
+window.onload = () => {
+  visualizacoes++;
+  document.getElementById("contador-visitas").innerText = visualizacoes;
+  carregarCapitulos();
+};
+
+// Curtir
+function curtirHistoria() {
+  curtidas++;
+  document.getElementById("contador-curtidas").innerText = curtidas;
+}
+
+// Favoritar
+function favoritarHistoria() {
+  alert("História adicionada aos favoritos!");
+}
+
+// Compartilhar
+function compartilharHistoria() {
+  navigator.clipboard.writeText(window.location.href);
+  alert("Link copiado para a área de transferência!");
+}
+
+// Denunciar
+function denunciarHistoria() {
+  alert("Sua denúncia foi enviada. Obrigado por nos informar.");
+}
+
+// Comentários
+function adicionarComentario() {
+  const texto = document.getElementById("novo-comentario").value;
+  if (texto.trim() === "") return;
+  comentarios.push(texto);
+  document.getElementById("novo-comentario").value = "";
+  atualizarComentarios();
+}
+
+function atualizarComentarios() {
+  const lista = document.getElementById("lista-comentarios");
+  lista.innerHTML = "";
+  comentarios.forEach(c => {
+    const li = document.createElement("li");
+    li.innerText = c;
+    lista.appendChild(li);
+  });
+}
+
+// Navegação Simulada
+function navegar(destino) {
+  alert(`Simulando navegação para: ${destino}`);
+}
+
+// Capítulos
+function carregarCapitulos() {
+  const lista = document.getElementById("lista-capitulos");
+  capitulos.forEach((c, i) => {
+    const li = document.createElement("li");
+    li.textContent = c.titulo;
+    li.onclick = () => mostrarCapitulo(i);
+    lista.appendChild(li);
+  });
+}
+
+function mostrarCapitulo(indice) {
+  document.getElementById("titulo-capitulo").innerText = capitulos[indice].titulo;
+  document.getElementById("texto-capitulo").innerText = capitulos[indice].texto;
+}
+</script>
+<footer class="site-footer">
+  <p>© 2025 Portal de Histórias</p>
+</footer>
