@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Configurações - Portal de Histórias</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body { margin: 0; padding: 0; font-family: Arial, sans-serif; height: 100%; display: flex; flex-direction: column; }
+    body { flex: 1; }
+    main { flex: 1; padding: 20px; }
+    header, footer {
+      background: linear-gradient(to right, #6a0dad, #888);
+      color: white;
+      padding: 10px 20px;
+    }
+    nav a { margin-right: 15px; color: white; text-decoration: none; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; font-weight: bold; }
+    select, input[type="checkbox"] { margin-top: 5px; }
+    button { background: #6a0dad; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Portal de Histórias</h1>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="perfil.html">Perfil</a>
+      <a href="notificacoes.html">Notificações</a>
+      <a href="logout.html">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Configurações da Conta</h2>
+    <form>
+      <div class="form-group">
+        <label>Receber notificações por e-mail:</label>
+        <input type="checkbox" checked>
+      </div>
+      <div class="form-group">
+        <label>Tema do site:</label>
+        <select>
+          <option>Tema Claro</option>
+          <option>Tema Escuro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Idioma preferido:</label>
+        <select>
+          <option>Português</option>
+          <option>Inglês</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Exibir meu perfil publicamente:</label>
+        <input type="checkbox" checked>
+      </div>
+      <button type="submit">Salvar Alterações</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>© 2025 Portal de Histórias</p>
+  </footer>
+</body>
+</html>
