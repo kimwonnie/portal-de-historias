@@ -6,43 +6,61 @@ body {
 }
 
 .navbar {
-  background-color: #6a0dad;
+  background: linear-gradient(to right, #6a0dad, #888);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
   color: #fff;
-  position: relative;
+  flex-wrap: wrap;
 }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+}
 .logo-container img {
   height: 40px;
   margin-right: 10px;
 }
 
+.site-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
 .site-nav a {
   color: #fff;
   text-decoration: none;
   margin: 0 10px;
 }
 
-.avatar {
+.profile-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.avatar, .profile-pic {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  object-fit: cover;
   cursor: pointer;
 }
 
 .dropdown-menu {
   display: none;
   position: absolute;
-  top: 60px;
-  right: 20px;
+  top: 50px;
+  right: 0;
   background-color: #fff;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
   border-radius: 5px;
-  overflow: hidden;
   z-index: 1000;
+}
+
+.dropdown-menu.show {
+  display: block;
 }
 
 .dropdown-menu a {
@@ -129,7 +147,7 @@ body {
 }
 
 .site-footer {
-  background-color: #6a0dad;
+  background: linear-gradient(to right, #6a0dad, #888);
   color: #fff;
   text-align: center;
   padding: 15px 0;
