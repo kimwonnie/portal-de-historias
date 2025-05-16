@@ -8,7 +8,7 @@ Bem-vindo ao **Portal de Histórias**, um site desenvolvido para permitir que **
 ## 🌐 Demonstração
 
 Acesse o site publicado aqui:  
-👉 https://seu-usuario.github.io/portal-de-historias/
+👉 https://kimwonnie.github.io/portal-de-historias/
 
 > Substitua `seu-usuario` pelo nome do seu GitHub após publicação.
 
@@ -76,11 +76,11 @@ portal-de-historias/
 
 ## 👥 Autores
 
-- **[Seu Nome Aqui]**
+- **Williams C M Santos**
 - Projeto desenvolvido para a disciplina _Laboratório de Desenvolvimento de Software_
 
 ---
 
 ## 📌 Licença
 
-Este projeto é apenas para fins educacionais e pode ser adaptado livremente.
+Este projeto é apenas para fins educacionais e não pode ser adaptado.
