@@ -4,18 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nova História</title>
-  <link rel="stylesheet" href="estilos.css" />
   <style>
-    /* Reset */
+    /* Reset básico */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    html, body {
+      height: 100%;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Container flexível */
+    .container {
+      flex: 1;
       display: flex;
       flex-direction: column;
     }
@@ -123,59 +132,59 @@
       color: white;
       text-align: center;
       padding: 15px;
-      margin-top: auto;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navbar -->
-  <nav class="navbar">
-    <a href="index.html" class="logo">Portal de Histórias</a>
-    <div class="menu">
-      <a href="index.html">Início</a>
-      <a href="categorias.html">Categorias</a>
-      <a href="perfil.html">Perfil</a>
-      <a href="login.html">Login</a>
-    </div>
-    <div class="profile-container">
-      <img src="profile.jpg" alt="Perfil" class="profile-pic" onclick="toggleDropdown()" />
-      <div id="dropdown-menu" class="dropdown-menu">
-        <a href="perfil.html">Meu Perfil</a>
-        <a href="configuracoes.html">Configurações</a>
-        <a href="logout.html">Logout</a>
+  <div class="container">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <a href="index.html" class="logo">Portal de Histórias</a>
+      <div class="menu">
+        <a href="index.html">Início</a>
+        <a href="categorias.html">Categorias</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="login.html">Login</a>
       </div>
-    </div>
-  </nav>
+      <div class="profile-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxUTt_KyZYDjMHg4nIO_brA3ZMeSb905ka4g&s" alt="Perfil" class="profile-pic" onclick="toggleDropdown()" />
+        <div id="dropdown-menu" class="dropdown-menu">
+          <a href="perfil.html">Meu Perfil</a>
+          <a href="configuracoes.html">Configurações</a>
+          <a href="logout.html">Logout</a>
+        </div>
+      </div>
+    </nav>
 
-  <!-- Formulário de Nova História -->
-  <form id="formNovaHistoria" enctype="multipart/form-data">
-    <h2>Nova História</h2>
+    <!-- Formulário de Nova História -->
+    <form id="formNovaHistoria" enctype="multipart/form-data">
+      <h2>Nova História</h2>
 
-    <label for="capaHistoria">Capa da História (opcional)</label>
-    <input type="file" id="capaHistoria" name="capaHistoria" accept="image/*">
-    <div id="previewCapa"></div>
+      <label for="capaHistoria">Capa da História (opcional)</label>
+      <input type="file" id="capaHistoria" name="capaHistoria" accept="image/*">
+      <div id="previewCapa"></div>
 
-    <label for="titulo">Título da História *</label>
-    <input type="text" id="titulo" name="titulo" required>
+      <label for="titulo">Título da História *</label>
+      <input type="text" id="titulo" name="titulo" required>
 
-    <label for="descricao">Descrição *</label>
-    <textarea id="descricao" name="descricao" rows="4" required></textarea>
+      <label for="descricao">Descrição *</label>
+      <textarea id="descricao" name="descricao" rows="4" required></textarea>
 
-    <label for="primeiroCapitulo">Primeiro Capítulo (opcional)</label>
-    <textarea id="primeiroCapitulo" name="primeiroCapitulo" rows="10" placeholder="Escreva o primeiro capítulo aqui..."></textarea>
+      <label for="primeiroCapitulo">Primeiro Capítulo (opcional)</label>
+      <textarea id="primeiroCapitulo" name="primeiroCapitulo" rows="10" placeholder="Escreva o primeiro capítulo aqui..."></textarea>
 
-    <button type="submit">Publicar História</button>
-  </form>
+      <button type="submit">Publicar História</button>
+    </form>
+  </div>
 
-  <!-- Rodapé -->
+  <!-- Rodapé fixo ao fim da página -->
   <footer class="footer">
     <p>&copy; 2025 Portal de Histórias. Todos os direitos reservados.</p>
   </footer>
 
   <!-- Scripts -->
   <script>
-    // Preview da imagem da capa
+    // Preview da imagem
     document.getElementById('capaHistoria').addEventListener('change', function(event) {
       const arquivo = event.target.files[0];
       const preview = document.getElementById('previewCapa');
@@ -195,13 +204,12 @@
       }
     });
 
-    // Dropdown do perfil
+    // Dropdown
     function toggleDropdown() {
       const menu = document.getElementById('dropdown-menu');
       menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
     }
 
-    // Fechar dropdown ao clicar fora
     window.addEventListener('click', function(e) {
       const menu = document.getElementById('dropdown-menu');
       const profile = document.querySelector('.profile-pic');
