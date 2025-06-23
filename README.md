@@ -10,7 +10,7 @@ Bem-vindo ao **Portal de Histórias**, um site desenvolvido para permitir que **
 Acesse o site publicado aqui:  
 👉 https://kimwonnie.github.io/portal-de-historias/
 
-> Substitua `seu-usuario` pelo nome do seu GitHub após publicação.
+
 
 ---
 
